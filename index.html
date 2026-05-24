@@ -1,1 +1,899 @@
-Oh Hai Dere
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tyler Hedrick — Actor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --page: #f5f4f1;
+      --ink: #141412;
+      --ink-mid: #4a4a46;
+      --ink-faint: #8a8a84;
+      --rule: rgba(20,20,18,0.11);
+      --accent: #2a7236;
+      --accent-dark: #1b5225;
+      --max: 1120px;
+      --pad: clamp(1.5rem, 5vw, 3.5rem);
+      --gap: clamp(4rem, 8vw, 7rem);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--page);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(245,244,241,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── Shared section layout ── */
+    section { padding: var(--gap) var(--pad); }
+    .section-inner { max-width: var(--max); margin: 0 auto; }
+
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 3rem;
+    }
+    .section-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── Hero ── */
+    #home {
+      padding-top: 0;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      background: var(--white);
+    }
+
+    .hero-left {
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: calc(var(--gap) + 5rem) var(--pad) var(--gap);
+      position: relative;
+      overflow: hidden;
+      border-right: 1px solid var(--rule);
+    }
+
+    .hero-left::before {
+      content: 'TH';
+      position: absolute;
+      top: 3rem;
+      left: var(--pad);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(8rem, 18vw, 16rem);
+      font-weight: 600;
+      color: rgba(20,20,18,0.04);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-left h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+      line-height: 1.0;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.15em;
+      position: relative;
+    }
+
+    .hero-left h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-tagline {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero-intro {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      max-width: 36ch;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+    .hero-cta-line {
+      display: inline-block;
+      width: 32px;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    .hero-cta:hover .hero-cta-line { width: 48px; }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-photo-credit {
+      position: absolute;
+      bottom: 1.2rem;
+      right: 1.2rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── Headshots ── */
+    #headshots {
+      background: var(--page);
+      border-top: 1px solid var(--rule);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .photo-item { position: relative; overflow: hidden; }
+    .photo-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .photo-item:hover img { transform: scale(1.03); }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2rem 1rem 0.9rem;
+      background: linear-gradient(to top, rgba(20,20,18,0.55), transparent);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .photo-item:hover .photo-caption { opacity: 1; }
+
+    /* ── Reel ── */
+    #reel {
+      background: var(--white);
+      border-top: 1px solid var(--rule);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .video-embed {
+      position: relative;
+      padding-top: 56.25%;
+      background: #e0e0da;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .video-meta { margin-top: 0.9rem; }
+
+    .video-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .video-sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+    }
+
+    /* ── Bio ── */
+    #bio {
+      background: var(--page);
+      border-top: 1px solid var(--rule);
+    }
+
+    .bio-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .bio-name-large {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-style: italic;
+      font-size: 3.2rem;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    .bio-stats { display: flex; flex-direction: column; }
+
+    .bio-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .bio-stat:first-child { border-top: 1px solid var(--rule); }
+
+    .bio-stat-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .bio-stat-value {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .bio-content p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink);
+      margin-bottom: 1.6em;
+    }
+    .bio-content p:last-child { margin-bottom: 0; }
+    .bio-content strong { font-weight: 600; color: var(--ink); }
+
+    /* ── Resume ── */
+    #resume {
+      background: var(--white);
+      border-top: 1px solid var(--rule);
+    }
+
+    .resume-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .resume-section-title {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      padding-bottom: 0.9rem;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 0;
+    }
+
+    .resume-entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+
+    .resume-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+
+    .resume-show {
+      font-size: 0.78rem;
+      color: var(--ink-mid);
+    }
+
+    .resume-year {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .sidebar-panel {
+      background: var(--page);
+      border: 1px solid var(--rule);
+      padding: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-panel-title {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .physical-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .physical-row:last-child { border-bottom: none; }
+    .physical-row span:first-child { font-size: 0.8rem; color: var(--ink-mid); }
+    .physical-row span:last-child { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-tag {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.65rem;
+      border: 1px solid var(--rule);
+      color: var(--ink-mid);
+      background: var(--white);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent-dark); }
+
+    .resume-download {
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
+      padding: 0.9rem 1.5rem;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .resume-download:hover { background: var(--accent-dark); }
+
+    /* ── Connect ── */
+    #connect {
+      background: var(--page);
+      border-top: 1px solid var(--rule);
+    }
+
+    .connect-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .connect-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .connect-left h2 em { font-style: italic; color: var(--accent); }
+
+    .connect-sub {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      max-width: 40ch;
+    }
+
+    .connect-email {
+      margin-top: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .connect-email::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .connect-email:hover { color: var(--accent); }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .social-link {
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.4rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .social-link:hover { background: var(--page); }
+    .social-link:hover .social-platform { color: var(--accent); }
+    .social-link:hover .social-icon-wrap { border-color: var(--accent); }
+    .social-link:hover .social-icon-wrap svg { fill: var(--accent); }
+
+    .social-icon-wrap {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s;
+    }
+    .social-icon-wrap svg { width: 15px; height: 15px; fill: var(--ink-mid); transition: fill 0.2s; }
+
+    .social-platform {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: color 0.2s;
+      display: block;
+    }
+    .social-handle {
+      font-size: 0.7rem;
+      color: var(--ink-faint);
+      display: block;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 1.5rem var(--pad);
+      border-top: 1px solid var(--rule);
+      background: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+    }
+
+    .footer-accent { color: var(--accent); font-weight: 500; }
+
+    /* ── Animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      #home { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { min-height: 70svh; padding-top: calc(var(--gap) + 5rem); border-right: none; border-bottom: 1px solid var(--rule); }
+      .hero-right { min-height: 55vw; }
+      .bio-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .resume-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .connect-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 640px) {
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .social-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1.25rem; }
+    }
+    @media (max-width: 440px) {
+      .photo-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a class="nav-name" href="#home">Tyler Hedrick</a>
+    <ul class="nav-links">
+      <li><a href="#headshots">Photos</a></li>
+      <li><a href="#reel">Reel</a></li>
+      <li><a href="#bio">About</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home">
+    <div class="hero-left">
+      <p class="hero-tagline">Actor · Musical Theatre · San Francisco</p>
+      <h1>Tyler<br /><em>Hedrick</em></h1>
+      <p class="hero-intro">Tenor and stage actor bringing technical precision and emotional depth to leading roles in musical theatre.</p>
+      <a class="hero-cta" href="#reel"><span class="hero-cta-line"></span>Watch the reel</a>
+    </div>
+    <div class="hero-right">
+      <!-- Replace src with your primary headshot -->
+      <img src="https://placehold.co/800x1067/c8c8c0/4a4a46?text=Primary+Headshot" alt="Tyler Hedrick — primary headshot" />
+      <span class="hero-photo-credit">Photo: Your Photographer</span>
+    </div>
+  </section>
+
+  <!-- Headshots -->
+  <section id="headshots">
+    <div class="section-inner">
+      <p class="section-eyebrow">Headshots</p>
+      <div class="photo-grid">
+        <div class="photo-item fade-up">
+          <img src="https://placehold.co/600x800/c0c0b8/4a4a46?text=Headshot+1" alt="Tyler Hedrick — commercial headshot" />
+          <p class="photo-caption">Commercial</p>
+        </div>
+        <div class="photo-item fade-up" style="transition-delay:0.1s;">
+          <img src="https://placehold.co/600x800/b8b8b0/4a4a46?text=Headshot+2" alt="Tyler Hedrick — theatrical headshot" />
+          <p class="photo-caption">Theatrical</p>
+        </div>
+        <div class="photo-item fade-up" style="transition-delay:0.2s;">
+          <img src="https://placehold.co/600x800/c8c8c0/4a4a46?text=Headshot+3" alt="Tyler Hedrick — character headshot" />
+          <p class="photo-caption">Character</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reel -->
+  <section id="reel">
+    <div class="section-inner">
+      <p class="section-eyebrow">Performance Reel</p>
+      <div class="video-grid">
+        <div class="fade-up">
+          <div class="video-embed">
+            <!-- Replace VIDEO_ID_1 with your YouTube video ID (the part after ?v=) -->
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Tyler Hedrick — Demo Reel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="video-meta">
+            <p class="video-title">Demo Reel 2024</p>
+            <p class="video-sub">Musical Theatre Highlights</p>
+          </div>
+        </div>
+        <div class="fade-up" style="transition-delay:0.1s;">
+          <div class="video-embed">
+            <!-- Replace VIDEO_ID_2 -->
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Performance Clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="video-meta">
+            <p class="video-title">Show Title, Production Name</p>
+            <p class="video-sub">Role · Theatre Name · Year</p>
+          </div>
+        </div>
+        <div class="fade-up" style="transition-delay:0.15s;">
+          <div class="video-embed">
+            <!-- Replace VIDEO_ID_3 -->
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Performance Clip 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="video-meta">
+            <p class="video-title">Show Title, Production Name</p>
+            <p class="video-sub">Role · Theatre Name · Year</p>
+          </div>
+        </div>
+        <div class="fade-up" style="transition-delay:0.2s;">
+          <div class="video-embed">
+            <!-- Replace VIDEO_ID_4 -->
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" title="Performance Clip 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="video-meta">
+            <p class="video-title">Show Title, Production Name</p>
+            <p class="video-sub">Role · Theatre Name · Year</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bio -->
+  <section id="bio">
+    <div class="section-inner">
+      <p class="section-eyebrow">About</p>
+      <div class="bio-layout">
+        <div class="fade-up">
+          <p class="bio-name-large">Tyler<br />Hedrick</p>
+          <div class="bio-stats">
+            <div class="bio-stat">
+              <span class="bio-stat-label">Voice Type</span>
+              <span class="bio-stat-value">Tenor</span>
+            </div>
+            <div class="bio-stat">
+              <span class="bio-stat-label">Based In</span>
+              <span class="bio-stat-value">San Francisco, CA</span>
+            </div>
+            <div class="bio-stat">
+              <span class="bio-stat-label">Training</span>
+              <span class="bio-stat-value">Your School / Program</span>
+            </div>
+            <div class="bio-stat">
+              <span class="bio-stat-label">Represented By</span>
+              <span class="bio-stat-value">Your Agency</span>
+            </div>
+          </div>
+        </div>
+        <div class="bio-content fade-up" style="transition-delay:0.15s;">
+          <!-- Replace with your actual biography -->
+          <p>Tyler Hedrick is a San Francisco-based actor and <strong>tenor</strong> whose stage work spans the full range of musical theatre — from intimate black-box productions to large-scale regional mainstage work. He brings meticulous attention to text and character alongside a powerful, versatile voice capable of both the lyric and the dramatic.</p>
+          <p>Trained at [Your School], Tyler has originated and inhabited roles in productions of [Show Title], [Show Title], and [Show Title], earning recognition for his ability to balance emotional truth with technical precision. He is equally at home in classic golden-age repertoire and contemporary new works premiering on the Bay Area's vibrant stages.</p>
+          <p>An avid musician off-stage, Tyler is currently returning to the clarinet after a long hiatus — a pursuit he finds deeply informs his musicality and his ear for the shape of a phrase. He is a passionate advocate for new musical theatre writing and the artists who make it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume">
+    <div class="section-inner">
+      <p class="section-eyebrow">Resume</p>
+      <div class="resume-layout">
+        <div class="fade-up">
+          <p class="resume-section-title">Theatre</p>
+          <div class="resume-entry">
+            <div><p class="resume-role">Role Name</p><p class="resume-show">Show Title · Theatre Name</p></div>
+            <p class="resume-year">2024</p>
+          </div>
+          <div class="resume-entry">
+            <div><p class="resume-role">Role Name</p><p class="resume-show">Show Title · Theatre Name</p></div>
+            <p class="resume-year">2024</p>
+          </div>
+          <div class="resume-entry">
+            <div><p class="resume-role">Role Name</p><p class="resume-show">Show Title · Theatre Name</p></div>
+            <p class="resume-year">2023</p>
+          </div>
+          <div class="resume-entry">
+            <div><p class="resume-role">Role Name</p><p class="resume-show">Show Title · Theatre Name</p></div>
+            <p class="resume-year">2023</p>
+          </div>
+          <div class="resume-entry">
+            <div><p class="resume-role">Role Name</p><p class="resume-show">Show Title · Theatre Name</p></div>
+            <p class="resume-year">2022</p>
+          </div>
+          <div class="resume-entry">
+            <div><p class="resume-role">Role Name</p><p class="resume-show">Show Title · Theatre Name</p></div>
+            <p class="resume-year">2022</p>
+          </div>
+          <div class="resume-entry">
+            <div><p class="resume-role">Role Name</p><p class="resume-show">Show Title · Theatre Name</p></div>
+            <p class="resume-year">2021</p>
+          </div>
+          <div class="resume-entry">
+            <div><p class="resume-role">Role Name</p><p class="resume-show">Show Title · Theatre Name</p></div>
+            <p class="resume-year">2020</p>
+          </div>
+
+          <p class="resume-section-title" style="margin-top:2.5rem;">Training</p>
+          <div class="resume-entry">
+            <div><p class="resume-role">BFA Musical Theatre</p><p class="resume-show">Your University</p></div>
+            <p class="resume-year">20XX</p>
+          </div>
+          <div class="resume-entry">
+            <div><p class="resume-role">Voice — Your Teacher</p><p class="resume-show">Private Study</p></div>
+            <p class="resume-year">Ongoing</p>
+          </div>
+          <div class="resume-entry">
+            <div><p class="resume-role">Acting — Your Teacher</p><p class="resume-show">Studio Name</p></div>
+            <p class="resume-year">20XX–20XX</p>
+          </div>
+        </div>
+
+        <div class="resume-sidebar fade-up" style="transition-delay:0.12s;">
+          <div class="sidebar-panel">
+            <p class="sidebar-panel-title">Physical</p>
+            <div class="physical-row"><span>Height</span><span>6' 0"</span></div>
+            <div class="physical-row"><span>Hair</span><span>Bald</span></div>
+            <div class="physical-row"><span>Eyes</span><span>Blue</span></div>
+            <div class="physical-row"><span>Voice</span><span>Tenor</span></div>
+          </div>
+
+          <div class="sidebar-panel">
+            <p class="sidebar-panel-title">Special Skills</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Tenor (High C)</span>
+              <span class="skill-tag">Clarinet</span>
+              <span class="skill-tag">Stage Combat</span>
+              <span class="skill-tag">Tap Dance</span>
+              <span class="skill-tag">Ballet</span>
+              <span class="skill-tag">Jazz Dance</span>
+              <span class="skill-tag">Dialects</span>
+              <span class="skill-tag">Piano</span>
+              <span class="skill-tag">Sight-Reading</span>
+              <span class="skill-tag">Improvisation</span>
+            </div>
+          </div>
+
+          <a class="resume-download" href="resume.pdf" download>Download Full Resume (PDF) ↓</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connect -->
+  <section id="connect">
+    <div class="connect-inner">
+      <div class="fade-up">
+        <p class="section-eyebrow">Connect</p>
+        <h2>Let's work<br /><em>together.</em></h2>
+        <p class="connect-sub">For casting inquiries, bookings, and collaborations — reach out directly or find me on any of the platforms below.</p>
+        <a class="connect-email" href="mailto:your@email.com">your@email.com</a>
+      </div>
+      <div class="fade-up" style="transition-delay:0.12s;">
+        <div class="social-grid">
+          <a class="social-link" href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">
+            <span class="social-icon-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </span>
+            <span class="social-text">
+              <span class="social-platform">Instagram</span>
+              <span class="social-handle">@your_handle</span>
+            </span>
+          </a>
+          <a class="social-link" href="https://tiktok.com/@YOUR_HANDLE" target="_blank" rel="noopener">
+            <span class="social-icon-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+            </span>
+            <span class="social-text">
+              <span class="social-platform">TikTok</span>
+              <span class="social-handle">@your_handle</span>
+            </span>
+          </a>
+          <a class="social-link" href="https://youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener">
+            <span class="social-icon-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            </span>
+            <span class="social-text">
+              <span class="social-platform">YouTube</span>
+              <span class="social-handle">@your_channel</span>
+            </span>
+          </a>
+          <a class="social-link" href="https://linkedin.com/in/YOUR_HANDLE" target="_blank" rel="noopener">
+            <span class="social-icon-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </span>
+            <span class="social-text">
+              <span class="social-platform">LinkedIn</span>
+              <span class="social-handle">your_handle</span>
+            </span>
+          </a>
+          <a class="social-link" href="https://actorsaccess.com/YOUR_PROFILE" target="_blank" rel="noopener" style="grid-column: 1 / -1;">
+            <span class="social-icon-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor" font-family="sans-serif">AA</text></svg>
+            </span>
+            <span class="social-text">
+              <span class="social-platform">Actors Access</span>
+              <span class="social-handle">View my casting profile</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span>© 2026 Tyler Hedrick</span>
+    <span>San Francisco, <span class="footer-accent">CA</span></span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
