@@ -60,7 +60,7 @@ nav {
   transition: color 0.2s;
 }
 .nav-icon-link:hover { color: var(--accent); }
-.nav-icon-link svg { width: 16px; height: 16px; fill: currentColor; display: block; }
+.nav-icon-link svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; }
 .nav-links a {
   font-size: 0.7rem;
   font-weight: 500;
