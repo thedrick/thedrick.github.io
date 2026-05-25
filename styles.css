@@ -98,7 +98,7 @@ section { padding: var(--gap) var(--pad); }
 
 /* ── Hero ── */
 #home {
-  padding-top: 4.5rem;
+  padding: 4.5rem 0 0 0;
   min-height: 100svh;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -133,20 +133,20 @@ section { padding: var(--gap) var(--pad); }
 }
 
 .hero-tagline {
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--ink-mid);
   margin-bottom: 2.5rem;
   position: relative;
 }
 
 .hero-intro {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: var(--ink-mid);
-  max-width: 36ch;
-  line-height: 1.8;
+  max-width: 34ch;
+  line-height: 1.75;
   margin-bottom: 2.5rem;
   position: relative;
 }
@@ -259,8 +259,8 @@ section { padding: var(--gap) var(--pad); }
 
 .video-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  font-weight: 400;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--ink);
   margin-bottom: 0.2rem;
 }
@@ -343,11 +343,11 @@ section { padding: var(--gap) var(--pad); }
 }
 
 .resume-section-title {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--ink-mid);
+  color: var(--ink);
   padding-bottom: 0.9rem;
   border-bottom: 2px solid var(--accent);
   margin-bottom: 0;
@@ -363,14 +363,14 @@ section { padding: var(--gap) var(--pad); }
 }
 
 .resume-role {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--ink);
   margin-bottom: 0.15rem;
 }
 
 .resume-show {
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   color: var(--ink-mid);
 }
 
@@ -391,11 +391,11 @@ section { padding: var(--gap) var(--pad); }
 }
 
 .sidebar-panel-title {
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--ink);
   margin-bottom: 1rem;
   padding-bottom: 0.8rem;
   border-bottom: 2px solid var(--accent);
@@ -409,12 +409,12 @@ section { padding: var(--gap) var(--pad); }
   border-bottom: 1px solid var(--rule);
 }
 .physical-row:last-child { border-bottom: none; }
-.physical-row span:first-child { font-size: 0.8rem; color: var(--ink-mid); }
-.physical-row span:last-child { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+.physical-row span:first-child { font-size: 0.9rem; color: var(--ink-mid); }
+.physical-row span:last-child { font-size: 1rem; font-weight: 500; color: var(--ink); }
 
 .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .skill-tag {
-  font-size: 0.68rem;
+  font-size: 0.82rem;
   font-weight: 400;
   letter-spacing: 0.05em;
   padding: 0.3rem 0.65rem;
@@ -570,7 +570,7 @@ footer {
 /* ── Responsive ── */
 @media (max-width: 900px) {
   #home { grid-template-columns: 1fr; min-height: auto; }
-  .hero-left { min-height: 70svh; padding: var(--gap) var(--pad); border-right: none; border-bottom: 1px solid var(--rule); }
+  .hero-left { min-height: auto; justify-content: flex-start; padding: var(--gap) var(--pad); border-right: none; border-bottom: 1px solid var(--rule); }
   .hero-right { min-height: 55vw; }
   .bio-layout { grid-template-columns: 1fr; gap: 3rem; }
   .resume-layout { grid-template-columns: 1fr; gap: 3rem; }
