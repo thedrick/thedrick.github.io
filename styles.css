@@ -14,7 +14,7 @@
   --gap: clamp(4rem, 8vw, 7rem);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 18px; }
 
 body {
   background: var(--page);
